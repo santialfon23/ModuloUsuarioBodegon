@@ -1,0 +1,56 @@
+@{
+    Layout = null;
+}
+@model ModuloUsuarioBodegon.Models.Reserva
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Reserva confirmada - Bodegón Don Macanudo</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="cabecera">
+        <div class="circulo-logo">
+            <img src="~/imagenes/logo_chef_bodegon.png" alt="Logo Bodegón Don Macanudo" class="img-logo">
+        </div>
+        <h1>BODEGÓN DON MACANUDO</h1>
+        <p class="subtitulo">— Cocina Mítica • Recetas Fantásticas & Minutas Gigantes —</p>
+    </div>
+
+    <div class="container contenedor-principal">
+
+        <div class="caja-reserva">
+            <i class="fa fa-check-circle circulo_ok_reserva"></i>
+            <h2>¡Reserva grabada correctamente!</h2>
+            <p class="reserva-subtitulo">Te esperamos en Bodegón Don Macanudo</p>
+            
+            <div class="detalles-reserva">
+                <!-- Acá inyectamos el Nombre del Cliente desde la Base de Datos -->
+                <p>A nombre de: <strong id="reserva-nombre" class="reserva-nombre">@(Model?.Cliente?.Nombre ?? "Cliente")</strong></p>
+                <!-- Acá inyectamos el Número de Reserva real generado -->
+                <p>Número de reserva: <strong id="reserva-numero" class="reserva-numero">@(Model?.NumeroReserva ?? "#0000")</strong></p>
+            </div>
+
+            <a asp-controller="Reservas" asp-action="Create" class="enlace-volver">&larr; Hacer otra reserva</a>
+        </div>
+
+    </div>
+
+    <div id="footer">
+        <p><strong>Bodegón Don Macanudo</strong> — Pasaje Ficticio 1234 (Esquina Fantasía)</p>
+        <p>Reservas: (011) 5555-4321 — Abierto de Martes a Domingos</p>
+        <ul class="list-inline">
+            <li><a href="https://instagram.com" target="_blank"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="https://facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="https://whatsapp.com" target="_blank"><i class="fa fa-whatsapp"></i></a></li>
+        </ul>
+    </div>
+
+</body>
+</html>
