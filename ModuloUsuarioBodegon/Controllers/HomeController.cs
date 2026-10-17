@@ -1,25 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
-using ModuloUsuarioBodegon.Models;
-using System.Diagnostics;
 
 namespace ModuloUsuarioBodegon.Controllers
 {
     public class HomeController : Controller
     {
+        // GET: /Home/Index -> portada
         public IActionResult Index()
         {
             return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

@@ -1,8 +1,55 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+@{
+    ViewData["Title"] = "Bodegón Don Macanudo";
+    Layout = null;
 }
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Bodegón Don Macanudo - Inicio</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="cabecera">
+        <div class="circulo-logo">
+            <img src="~/imagenes/logo_chef_bodegon.png" alt="Logo Bodegón Don Macanudo" class="img-logo">
+        </div>
+        <h1>BODEGÓN DON MACANUDO</h1>
+        <p class="subtitulo">— Cocina Mítica • Recetas Fantásticas & Minutas Gigantes —</p>
+    </div>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <!-- BOTONES -->
+     <div class="caja-botones-ppal">
+        <a asp-controller="Menu" asp-action="Index" class="btn btn-lg btn-reserva separador-ppal"><i class="fa fa-cutlery"></i> Ver Menú</a>
+        <a asp-controller="Reservas" asp-action="Create" class="btn btn-lg btn-reserva"><i class="fa fa-calendar"></i> Reservar</a>
+    </div>
+
+    <!-- CONTENIDO -->
+    <div class="container contenedor-principal">
+        <div class="caja-centro-ppal">
+            <h2 class="titulo-ppal">
+                ¡Pasá y conocenos!
+            </h2>
+            <p class="texto-ppal">
+                Acá se come abundante y rico, como en los bodegones de antes. Pegate una vuelta por la carta para elegir qué vas a pedir o aseguranos tu lugar reservando una mesa.
+            </p>
+            
+            <img src="~/imagenes/bife-colosal-500g.jpg" alt="Plato destacado Bodegón Don Macanudo" class="foto-ppal">
+        </div>
+    </div>
+
+    <div id="footer">
+        <p><strong>Bodegón Don Macanudo</strong> — Pasaje Ficticio 1234 (Esquina Fantasía)</p>
+        <p>Reservas: (011) 5555-4321 — Abierto de Martes a Domingos</p>
+        <ul class="list-inline">
+            <li><a href="https://instagram.com" target="_blank"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="https://facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="https://whatsapp.com" target="_blank"><i class="fa fa-whatsapp"></i></a></li>
+        </ul>
+    </div>
+</body>
+</html>

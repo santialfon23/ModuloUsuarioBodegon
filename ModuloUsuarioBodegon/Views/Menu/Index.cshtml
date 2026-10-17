@@ -1,0 +1,94 @@
+@{
+    Layout = null;
+}
+@model IEnumerable<ModuloUsuarioBodegon.Models.Categoria>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Bodegón Don Macanudo - Carta Mítica</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="cabecera">
+        <div class="circulo-logo">
+            <img src="~/imagenes/logo_chef_bodegon.png" alt="Logo Bodegón Don Macanudo" class="img-logo">
+        </div>
+        <h1>BODEGÓN DON MACANUDO</h1>
+        <p class="subtitulo">— Cocina Mítica • Recetas Fantásticas & Minutas Gigantes —</p>
+    </div>
+
+    <div id="bloque-reserva">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-lg btn-reserva separador-ppal"><i class="fa fa-home"></i> Inicio</a>
+        <a asp-controller="Reservas" asp-action="Create" class="btn btn-lg btn-reserva"><i class="fa fa-calendar"></i> Reservar Mesa</a>
+    </div>
+
+    <div class="container contenedor-principal">
+        
+        @{
+            int contador = 0;
+        }
+
+        @foreach (var grupo in Model)
+        {
+            if (contador % 3 == 0)
+            {
+                if (contador > 0)
+                {
+                    @:</div>
+                }
+                @:<div class="row">
+            }
+
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="bloque-categoria">
+                    <h2><i class="fa @(string.IsNullOrEmpty(grupo.Icono) ? "fa-cutlery" : grupo.Icono)"></i> @grupo.Nombre</h2>
+                    <table class="tabla-comida">
+                        @foreach (var item in grupo.ObtenerPlatos())
+                        {
+                            <tr>
+                                <td>
+                                    <div class="detalle-plato">
+                                        <img src="~/imagenes/@item.ImagenUrl" alt="@item.Nombre" class="foto-item">
+                                        <div class="info-texto">
+                                            <strong>@item.Nombre</strong>
+                                            <small>@item.Descripcion</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="precio">$@item.Precio</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+
+            contador++;
+        }
+
+        @if (Model.Any())
+        {
+            @:</div>
+        }
+
+        <div class="aviso-pie">
+            <p><i class="fa fa-info-circle"></i> Todos nuestros platos son abundantes. Cobro de servicio de mesa: $600 por persona.</p>
+        </div>
+
+    </div>
+
+    <div id="footer">
+        <p><strong>Bodegón Don Macanudo</strong> — Pasaje Ficticio 1234 (Esquina Fantasía)</p>
+        <p>Reservas: (011) 5555-4321 — Abierto de Martes a Domingos</p>
+        <ul class="list-inline">
+            <li><a href="https://instagram.com" target="_blank"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="https://facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="https://whatsapp.com" target="_blank"><i class="fa fa-whatsapp"></i></a></li>
+        </ul>
+    </div>
+</body>
+</html>
